@@ -1,6 +1,6 @@
 
 export interface Todo {
-  id: number | string
+  id: number
   name: string
   selected: boolean
 }
