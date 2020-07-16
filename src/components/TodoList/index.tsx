@@ -1,37 +1,63 @@
-import React, { useState, useEffect } from "react";
-import ListItem from "../ListItem";
-import { cloneDeep } from "../../utils";
+import React from "react";
 import { Todo } from "../../types";
+import ListItem from "../ListItem";
+import TodoInput from "../TodoInput/TodoInput";
+import { useTodos } from "./hooks";
 
 export default function TodoList(props: {
-  todos: Todo[],
-  todosDidUpdateHandler: Function
+  todos: Todo[];
+  onUpdated: Function;
 }) {
-  function cloneTodos() {
-    return cloneDeep(props.todos);
-  }
+  const {
+    todos,
+    todosCount,
+    completesCount,
+    onDelete,
+    onCreate,
+    onUpdate,
+  } = useTodos(props.todos);
 
-  const [todos, setTodos] = useState(cloneTodos());
-
-  useEffect(() => {
-    setTodos(cloneTodos());
-  }, [props.todos]);
-
-  function deleteTodoHandler(todo: Todo) {
-    const filtedTodos = todos.filter((item) => item.name !== todo.name)
-    setTodos(filtedTodos);
-    props.todosDidUpdateHandler(filtedTodos)
+  function onToggleHandler(todo: Todo) {
+    onUpdate(todo);
+    props.onUpdated(todos);
   }
 
   return (
-    <div>
-      {todos.map((todo) => (
-        <ListItem
-          key={todo.id}
-          todo={todo}
-          deleteTodoHandler={deleteTodoHandler}
-        />
-      ))}
+    <div className="todo-list">
+      <div className="todo-list__input-wrapper">
+        <TodoInput onCreate={onCreate} />
+      </div>
+      <div>{renderCompletesMessage(todosCount, completesCount)}</div>
+      <div className="todo-list__items-wrapper">
+        {todos.map((todo) => (
+          <ListItem
+            key={todo.id}
+            todo={todo}
+            todoDidDelete={onDelete}
+            onToggle={onToggleHandler}
+          />
+        ))}
+      </div>
     </div>
   );
+}
+
+function renderCompletesMessage(todosCount: number, completesCount: number) {
+  if (todosCount === 0) {
+    return <span>You't don't have any task.</span>;
+  }
+
+  if (todosCount > 0 && todosCount === completesCount) {
+    return <span>All tasks are completed.</span>;
+  }
+
+  if (todosCount > 1) {
+    return (
+      <span>
+        Complete {completesCount} of {todosCount} tasks.
+      </span>
+    );
+  } else {
+    return <span>You have one task.</span>;
+  }
 }

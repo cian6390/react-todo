@@ -12,15 +12,6 @@
   margin: 0 auto;
 }
 
-.search-input {
-  max-width: 100%;
-  width: 275px;
-  padding: 5px 15px;
-  height: 30px;
-  font-size: 18px;
-  margin: 25px 0;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -30,7 +21,7 @@
 .App-header {
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
   font-size: calc(10px + 2vmin);
 }
 
