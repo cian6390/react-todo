@@ -7,6 +7,13 @@
   pointer-events: none;
 }
 
+hr {
+  margin: 0;
+  height: 1px;
+  border: none;
+  background-color: #ccc;
+}
+
 .todo-wrapper {
   width: 600px;
   margin: 0 auto;
@@ -19,14 +26,40 @@
 }
 
 .App-header {
+  padding: 0 15px;
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  font-size: calc(10px + 2vmin);
+  align-items: flex-end;
+}
+
+.app-main {
+  padding: 15px;
+}
+
+.spacer {
+  flex: 1 1 auto;
 }
 
 .App-link {
   color: #61dafb;
+}
+
+.links {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &__item {
+    list-style: none;
+    padding: 5px 10px;
+    a {
+      color: #4285f4;
+      text-decoration: none;
+      &:hover {
+        color: darken($color: #4285f4, $amount: 20);
+        text-decoration: underline;
+      }
+    }
+  }
 }
 
 @keyframes App-logo-spin {

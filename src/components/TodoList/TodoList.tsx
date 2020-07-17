@@ -4,10 +4,7 @@ import ListItem from "../ListItem";
 import TodoInput from "../TodoInput/TodoInput";
 import { useTodos } from "./hooks";
 
-export default function TodoList(props: {
-  todos: Todo[];
-  onUpdated: Function;
-}) {
+export default function TodoList() {
   const {
     todos,
     todosCount,
@@ -15,11 +12,10 @@ export default function TodoList(props: {
     onDelete,
     onCreate,
     onUpdate,
-  } = useTodos(props.todos);
+  } = useTodos([]);
 
   function onToggleHandler(todo: Todo) {
     onUpdate(todo);
-    props.onUpdated(todos);
   }
 
   return (

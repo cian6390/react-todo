@@ -1,28 +1,35 @@
 import "./App.scss";
-import React, { useState } from "react";
+import React from "react";
 import logo from "../../logo.svg";
-import TodoList from "../TodoList";
-import { cloneDeep } from "../../utils";
-import { Todo } from "../../types";
+import { useLocation } from "react-router-dom";
+import { Link, RouterView, routes } from "../../router";
+
+function usePageViews() {
+  let location = useLocation();
+  React.useEffect(() => {
+    console.log(["pageview", location.pathname]);
+  }, [location]);
+}
 
 function App() {
-  const [todos, setTodos] = useState([] as Todo[]);
-
-  function todosDidUpdateHandler(todos: Todo[]) {
-    setTodos(cloneDeep(todos));
-  }
-
+  usePageViews();
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        React Todo
+        <div className="spacer"></div>
+        <ul className="links">
+          <li className="links__item">
+            <Link to="/">Home</Link>
+          </li>
+          <li className="links__item">
+            <Link to="/todo-list">TodoList</Link>
+          </li>
+        </ul>
       </header>
       <hr />
-      <main>
-        <div className="todo-wrapper">
-          <TodoList todos={todos} onUpdated={todosDidUpdateHandler} />
-        </div>
+      <main className="app-main">
+        <RouterView routes={routes} />
       </main>
     </div>
   );
