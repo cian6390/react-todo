@@ -1,5 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
+import Login from './components/Login'
 import Game from "./components/Game/Game";
 import TodoList from "./components/TodoList/TodoList";
 export { BrowserRouter as Router, Link } from "react-router-dom";
@@ -12,8 +13,14 @@ export const routes = [
   },
   {
     path: "/todo-list",
+    exact: true,
     component: TodoList,
   },
+  {
+    path: '/login',
+    exact: true,
+    component: Login
+  }
 ];
 
 // Copy from https://reactrouter.com/web/example/route-config

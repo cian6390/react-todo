@@ -4,12 +4,15 @@ import "./index.css";
 import App from "./components/App/App";
 import * as serviceWorker from "./serviceWorker";
 import { Router } from "./router";
+import { AuthProvider } from './components/Auth'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <App />
-    </Router>
+    <AuthProvider>
+      <Router>
+        <App />
+      </Router>
+    </AuthProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
