@@ -1,14 +1,14 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
+import Game from "./components/Game/Game";
 import TodoList from "./components/TodoList/TodoList";
-import Home from "./components/Home";
 export { BrowserRouter as Router, Link } from "react-router-dom";
 
 export const routes = [
   {
     path: "/",
     exact: true,
-    component: Home,
+    component: Game,
   },
   {
     path: "/todo-list",

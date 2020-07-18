@@ -1,0 +1,23 @@
+.game {
+    display: flex;
+    flex-wrap: wrap;
+    &__message {
+        width: 100%;
+        flex: none;
+        margin-bottom: 30px;
+    }
+    &__board {
+        width: 150px;
+        height: 150px;
+        display: flex;
+        flex-wrap: wrap;
+        flex: none;
+        box-sizing: border-box;
+    }
+    &__history {
+        margin-left: 15px;
+        .game-history {
+            margin-bottom: 5px;
+        }
+    }
+}
