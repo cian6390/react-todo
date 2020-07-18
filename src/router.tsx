@@ -3,11 +3,22 @@ import { Switch, Route } from "react-router-dom";
 import Login from './components/Login'
 import Game from "./components/Game/Game";
 import TodoList from "./components/TodoList/TodoList";
+import DND from './components/DND/DND'
 export { BrowserRouter as Router, Link } from "react-router-dom";
 
 export const routes = [
   {
-    path: "/",
+    path: '/',
+    exact: true,
+    component: () => <h1>Home</h1>
+  },
+  {
+    path: '/drag-and-drop',
+    exact: true,
+    component: DND
+  },
+  {
+    path: "/game",
     exact: true,
     component: Game,
   },

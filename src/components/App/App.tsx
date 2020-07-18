@@ -24,10 +24,16 @@ function App() {
         <div className="spacer"></div>
         <ul className="links">
           <li className="links__item">
-            <Link to="/">Game</Link>
+            <Link to="/">Home</Link>
+          </li>
+          <li className="links__item">
+            <Link to="/game">Game</Link>
           </li>
           <li className="links__item">
             <Link to="/todo-list">TodoList</Link>
+          </li>
+          <li className="links__item">
+            <Link to="/drag-and-drop">DnD</Link>
           </li>
           <li className="links__item">
             {user ? (

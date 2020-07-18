@@ -1,0 +1,45 @@
+
+.drag-list {
+  width: 300px;
+  .prevent-childrens-pointer {
+    & > * {
+      pointer-events: none;
+    }
+  }
+  .drag-list__list-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .list-item {
+    padding: 10px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    position: relative;
+    background-color: lightyellow;
+    transition: transform .1s linear, opacity .1s linear;
+    &.on-drag {
+      opacity: .5;
+      transform: scale(0.9);
+    }
+    &.on-drag-over {
+      border: 2px dashed green;
+    }
+    &__number {
+      flex: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: yellow;
+    }
+    &__title {
+      margin: 0;
+      margin-left: 15px;
+      flex: auto;
+      text-align: left;
+    }
+  }
+}
