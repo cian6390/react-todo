@@ -3,24 +3,18 @@ import React, { useContext } from "react";
 import logo from "../../assets/logo.svg";
 import { useLocation, Switch, Route } from "react-router-dom";
 import { Link, routes } from "../../router";
-import { AuthContext } from "../Auth";
-import { firebaseApp } from "../../services/firebase";
+import { themeContext } from "../ThemeContext";
+import { authContext } from "../AuthContext";
 
 function App() {
   usePageViews();
-
-  const { user } = useContext(AuthContext);
-
-  async function logoutHandler(e: React.MouseEvent) {
-    e.preventDefault();
-    await firebaseApp.auth().signOut();
-  }
+  const auth = useContext(authContext);
+  const theme = useContext(themeContext);
 
   return (
-    <div className="App">
+    <div className={`App ${theme.mode}`}>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        {user && <div>Hello {user.email}</div>}
         <div className="spacer"></div>
         <ul className="links">
           <li className="links__item">
@@ -36,8 +30,8 @@ function App() {
             <Link to="/drag-and-drop">DnD</Link>
           </li>
           <li className="links__item">
-            {user ? (
-              <button onClick={logoutHandler}>Logout</button>
+            {auth.state.user ? (
+              <button onClick={() => auth.logout()}>Logout</button>
             ) : (
               <Link to="/login">Login</Link>
             )}
