@@ -13,4 +13,12 @@ const firebaseConfig = {
 
 export const firebaseApp = initializeApp(firebaseConfig)
 
+export function login(email: string, password: string) {
+  return firebaseApp.auth().signInWithEmailAndPassword(email, password);
+}
+
+export function logout() {
+  return firebaseApp.auth().signOut();
+}
+
 export default firebaseApp

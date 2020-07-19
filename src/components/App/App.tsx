@@ -1,15 +1,28 @@
 import "./App.scss";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import logo from "../../assets/logo.svg";
 import { useLocation, Switch, Route } from "react-router-dom";
 import { Link, routes } from "../../router";
 import { themeContext } from "../ThemeContext";
-import { authContext } from "../AuthContext";
+
+import { logout, firebaseApp } from '../../services/firebase'
+import { RootState, unsetUser, setUser } from '../../store'
+import { useSelector, useDispatch } from 'react-redux'
 
 function App() {
   usePageViews();
-  const auth = useContext(authContext);
+  const dispatch = useDispatch()
   const theme = useContext(themeContext);
+  const auth = useSelector((state: RootState) => state.auth)
+
+  useEffect(() => {
+    firebaseApp.auth().onAuthStateChanged(user => dispatch(setUser(user)))
+  }, [dispatch])
+
+  async function logoutHandler() {
+    await logout()
+    dispatch(unsetUser())
+  }
 
   return (
     <div className={`App ${theme.mode}`}>
@@ -30,8 +43,8 @@ function App() {
             <Link to="/drag-and-drop">DnD</Link>
           </li>
           <li className="links__item">
-            {auth.state.user ? (
-              <button onClick={() => auth.logout()}>Logout</button>
+            {auth.user ? (
+              <button onClick={logoutHandler}>Logout</button>
             ) : (
               <Link to="/login">Login</Link>
             )}

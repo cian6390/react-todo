@@ -1,7 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { withRouter } from "react-router";
 import RefList from "./RefList";
-import { authContext } from "./AuthContext";
+
+import { login } from '../services/firebase'
+import { setUser } from '../store'
+import { useDispatch } from 'react-redux'
 
 const refs = [
   {
@@ -12,14 +15,16 @@ const refs = [
 ];
 
 export const Login = withRouter(({ history }) => {
-  const auth = useContext(authContext);
+  const dispatch = useDispatch()
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const onSubmitHandler = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await auth.login(email, password);
+      const response = await login(email, password)
+      dispatch(setUser(response.user))
       history.push("/");
     } catch (error) {
       alert(error);
