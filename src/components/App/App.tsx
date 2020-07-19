@@ -1,8 +1,8 @@
 import "./App.scss";
 import React, { useContext } from "react";
 import logo from "../../assets/logo.svg";
-import { useLocation } from "react-router-dom";
-import { Link, RouterView, routes } from "../../router";
+import { useLocation, Switch, Route } from "react-router-dom";
+import { Link, routes } from "../../router";
 import { AuthContext } from "../Auth";
 import { firebaseApp } from "../../services/firebase";
 
@@ -46,7 +46,16 @@ function App() {
       </header>
       <hr />
       <main className="app-main">
-        <RouterView routes={routes} />
+        <Switch>
+          {routes.map((route, index) => (
+            <Route
+              key={index}
+              exact={route.exact}
+              path={route.path}
+              component={route.component}
+            />
+          ))}
+        </Switch>
       </main>
     </div>
   );

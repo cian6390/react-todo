@@ -1,27 +1,19 @@
+import pkg from '../package.json'
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/App/App";
 import { Router } from "./router";
 import { AuthProvider } from './components/Auth'
 
-function AppRoot(renderChildren: () => JSX.Element) {
-  if (process.env.NODE_ENV === 'production') {
-    return renderChildren()
-  } else {
-    return (
-      <React.StrictMode>
-        {renderChildren()}
-      </React.StrictMode>
-    )
-  }
-}
+console.log(`app version ${pkg.version}`)
 
-ReactDOM.render(AppRoot(() => (
+ReactDOM.render(
+  <React.StrictMode>
     <AuthProvider>
       <Router>
         <App />
       </Router>
     </AuthProvider>
-  )),
+  </React.StrictMode>,
   document.getElementById("root")
 );

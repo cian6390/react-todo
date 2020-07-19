@@ -21,6 +21,8 @@ export function RouteWithSubRoutes(route: RouteProps) {
   );
 }
 
+// This function not work will
+// It will break in production mode and I don't know why.
 export function RouterView(props: { routes: RouteProps[] }) {
   return (
     <Switch>
