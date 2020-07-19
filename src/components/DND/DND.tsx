@@ -1,5 +1,6 @@
 import "./DND.scss";
 import React from "react";
+import RefList from '../RefList'
 import useDraggable from "./draggable";
 
 export default function DND() {
@@ -12,6 +13,16 @@ export default function DND() {
   ];
 
   const { list, onDragStart, onDragOver, onDragLeave, onDrop } = useDraggable(items);
+
+  const refs = [
+    {
+      text: 'MDN HTML 拖放 API',
+      url: 'https://developer.mozilla.org/zh-TW/docs/Web/API/HTML_Drag_and_Drop_API'
+    }, {
+      text: 'Creating a Drag and Drop List with React Hooks',
+      url: 'https://dev.to/florantara/creating-a-drag-and-drop-list-with-react-hooks-4c0i'
+    }
+  ]
 
   return (
     <section>
@@ -32,6 +43,7 @@ export default function DND() {
           </div>
         ))}
       </div>
+      <RefList items={refs}/>
     </section>
   );
 }
