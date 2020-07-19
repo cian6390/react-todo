@@ -8,10 +8,9 @@ export interface RefListProps {
 }
 
 const rootStyle = {
-  width: '100%',
-  maxWidth: '450px',
-  textAlign: 'left' as 'left'
-}
+  width: "100%",
+  textAlign: "left" as "left",
+};
 
 export default function RefList(props: RefListProps) {
   return (
@@ -19,7 +18,11 @@ export default function RefList(props: RefListProps) {
       <h3>References</h3>
       <ul>
         {props.items.map((item) => (
-          <li key={item.text}><a rel="noopener noreferrer" target="_blank" href={item.url}>{item.text}</a></li>
+          <li style={{ lineHeight: "1.75" }} key={item.text}>
+            <a rel="noopener noreferrer" target="_blank" href={item.url}>
+              {item.text}
+            </a>
+          </li>
         ))}
       </ul>
     </div>

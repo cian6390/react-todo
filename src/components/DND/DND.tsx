@@ -16,8 +16,8 @@ export default function DND() {
 
   const refs = [
     {
-      text: 'MDN HTML 拖放 API',
-      url: 'https://developer.mozilla.org/zh-TW/docs/Web/API/HTML_Drag_and_Drop_API'
+      text: 'HTML Drag and Drop API',
+      url: 'https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API'
     }, {
       text: 'Creating a Drag and Drop List with React Hooks',
       url: 'https://dev.to/florantara/creating-a-drag-and-drop-list-with-react-hooks-4c0i'
