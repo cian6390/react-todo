@@ -18,7 +18,7 @@ export default function () {
   return (
     <div className="game">
       <div className="game__message">
-        {winner && <div>{winner.name} is Winner 🏆</div>}
+        {winner && <div>{winner.name} is Winner <span role="img" aria-label="trophy">🏆</span></div>}
         <mark>{player.name}</mark>'s turn
       </div>
       <div className="game__board">
