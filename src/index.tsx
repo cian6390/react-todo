@@ -4,13 +4,24 @@ import App from "./components/App/App";
 import { Router } from "./router";
 import { AuthProvider } from './components/Auth'
 
-ReactDOM.render(
-  <React.StrictMode>
+function AppRoot(renderChildren: () => JSX.Element) {
+  if (process.env.NODE_ENV === 'production') {
+    return renderChildren()
+  } else {
+    return (
+      <React.StrictMode>
+        {renderChildren()}
+      </React.StrictMode>
+    )
+  }
+}
+
+ReactDOM.render(AppRoot(() => (
     <AuthProvider>
       <Router>
         <App />
       </Router>
     </AuthProvider>
-  </React.StrictMode>,
+  )),
   document.getElementById("root")
 );
