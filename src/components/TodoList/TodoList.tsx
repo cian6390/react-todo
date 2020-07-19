@@ -1,7 +1,7 @@
 import React from "react";
 import { Todo } from "../../types";
-import ListItem from "../ListItem";
-import TodoInput from "../TodoInput/TodoInput";
+import ListItem from "./ListItem";
+import TodoInput from "./TodoInput/TodoInput";
 import { useTodos } from "./hooks";
 
 export default function TodoList() {

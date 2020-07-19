@@ -1,6 +1,6 @@
 import "./DND.scss";
 import React from "react";
-import useDraggable from "../../hooks/draggable";
+import useDraggable from "./draggable";
 
 export default function DND() {
   const items = [

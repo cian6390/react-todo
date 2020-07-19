@@ -1,14 +1,14 @@
 import { User as FirebaseUser } from "firebase";
 import React, { useState, useEffect } from "react";
-import { firebaseApp } from "../base";
+import { firebaseApp } from "../services/firebase";
 
 export type User = null | FirebaseUser;
 
-export interface RootStore {
+export interface AuthContext {
   user: User;
 }
 
-export const AuthContext = React.createContext({ user: null } as RootStore);
+export const AuthContext = React.createContext({ user: null } as AuthContext);
 
 // @ts-ignore
 export const AuthProvider = function ({ children }) {

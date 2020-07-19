@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from "react";
-import { firebaseApp } from "../base";
+import { firebaseApp } from "../services/firebase";
 import { withRouter } from "react-router";
 
 export const Login = withRouter(({ history }) => {

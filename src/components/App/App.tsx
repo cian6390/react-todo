@@ -1,10 +1,10 @@
 import "./App.scss";
 import React, { useContext } from "react";
-import logo from "../../logo.svg";
+import logo from "../../assets/logo.svg";
 import { useLocation } from "react-router-dom";
 import { Link, RouterView, routes } from "../../router";
 import { AuthContext } from "../Auth";
-import { firebaseApp } from "../../base";
+import { firebaseApp } from "../../services/firebase";
 
 function App() {
   usePageViews();

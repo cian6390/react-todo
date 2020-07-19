@@ -1,6 +1,6 @@
 import './TodoInput.scss'
 import React, { useState } from "react";
-import { prevent } from "../../utils";
+import { prevent } from "../../../utils";
 
 export default function TodoInput(props: {
   onCreate: (q: string) => any;
