@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { cloneDeep } from "../../utils";
-import { Todo } from "../../types";
+import { Todo } from "./types";
 
 export function useTodos(todosSource: Todo[]) {
 

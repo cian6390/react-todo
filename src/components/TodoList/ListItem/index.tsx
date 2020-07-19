@@ -1,7 +1,7 @@
 import "./ListItem.scss";
 import React, { useState } from "react";
 import { cloneDeep } from "../../../utils";
-import { Todo } from "../../../types";
+import { Todo } from "../types";
 
 export default function ListItem(props: {
   todo: Todo;
