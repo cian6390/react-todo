@@ -1,11 +1,11 @@
-import pkg from '../package.json'
+import pkg from "../package.json";
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/App/App";
 import { Router } from "./router";
-import { AuthProvider } from './components/Auth'
+import { AuthProvider } from "./components/Auth";
 
-console.log(`app version ${pkg.version}`)
+console.log(`app version ${pkg.version}`);
 
 ReactDOM.render(
   <React.StrictMode>

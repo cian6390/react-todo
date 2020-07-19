@@ -1,7 +1,7 @@
 import "./Game.scss";
 import React from "react";
 import useGame from "./hook";
-import RefList from '../RefList'
+import RefList from "../RefList";
 import Square from "./Square/Square";
 
 export default function () {
@@ -16,19 +16,25 @@ export default function () {
     onClickHandler,
   } = useGame(initialPlayer);
 
-
   const refs = [
     {
-      text: 'React Completing the Game',
-      url: 'https://reactjs.org/tutorial/tutorial.html#completing-the-game'
-    }
-  ]
+      text: "React Completing the Game",
+      url: "https://reactjs.org/tutorial/tutorial.html#completing-the-game",
+    },
+  ];
 
   return (
     <>
       <div className="game">
         <div className="game__message">
-          {winner && <div>{winner.name} is Winner <span role="img" aria-label="trophy">🏆</span></div>}
+          {winner && (
+            <div>
+              {winner.name} is Winner{" "}
+              <span role="img" aria-label="trophy">
+                🏆
+              </span>
+            </div>
+          )}
           <mark>{player.name}</mark>'s turn
         </div>
         <div className="game__board">
@@ -43,12 +49,14 @@ export default function () {
         <div className="game__history">
           {histories.map((history, i) => (
             <div className="game-history" key={i}>
-              <button onClick={() => backToStep(i)}>Back To Step {i + 1}</button>
+              <button onClick={() => backToStep(i)}>
+                Back To Step {i + 1}
+              </button>
             </div>
           ))}
         </div>
       </div>
-      <RefList items={refs}/>
+      <RefList items={refs} />
     </>
   );
 }

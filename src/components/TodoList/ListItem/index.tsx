@@ -6,23 +6,23 @@ import { Todo } from "../types";
 export default function ListItem(props: {
   todo: Todo;
   todoDidDelete: Function;
-  onToggle: Function
+  onToggle: Function;
 }) {
   const item = cloneDeep(props.todo);
 
   const [todo, setTodo] = useState(item);
 
   const elemId = `list-item__checkbox-${todo.name}`;
-      
+
   function onChangeHandler(todo: Todo) {
     todo.selected = !todo.selected;
-    const newTodo = { ...todo, selected: todo.selected }
+    const newTodo = { ...todo, selected: todo.selected };
     setTodo(newTodo);
-    props.onToggle(todo)
+    props.onToggle(todo);
   }
 
   return (
-    <div className={`list-item ${todo.selected ? "done" : ''}`}>
+    <div className={`list-item ${todo.selected ? "done" : ""}`}>
       <input
         id={elemId}
         type="checkbox"

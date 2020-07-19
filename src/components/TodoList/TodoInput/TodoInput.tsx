@@ -1,20 +1,17 @@
-import './TodoInput.scss'
+import "./TodoInput.scss";
 import React, { useState } from "react";
-import { prevent } from "../../../utils";
 
-export default function TodoInput(props: {
-  onCreate: (q: string) => any;
-}) {
-
+export default function TodoInput(props: { onCreate: (q: string) => any }) {
   const [q, setQuerystring] = useState("");
 
-  function onSubmitHandler (q: string, e: React.BaseSyntheticEvent) {
-    props.onCreate(q)
-    setQuerystring("")
+  function onSubmitHandler(q: string, e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    props.onCreate(q);
+    setQuerystring("");
   }
 
   return (
-    <form className="todo-input-form" onSubmit={(e) => onSubmitHandler(q, prevent(e))}>
+    <form className="todo-input-form" onSubmit={(e) => onSubmitHandler(q, e)}>
       <input
         className="todo-input"
         type="text"
