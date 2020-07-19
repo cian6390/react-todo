@@ -48,6 +48,7 @@ hr {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: auto;
   &__item {
     list-style: none;
     padding: 5px 10px;
