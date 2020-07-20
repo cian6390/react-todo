@@ -4,12 +4,18 @@ import Login from "../components/Login";
 import DND from "../components/DND/DND";
 import Game from "../components/Game/Game";
 import TodoList from "../components/TodoList/TodoList";
+import Pokemon from '../components/Pokemon/Pokemon'
 
 export const routes: RouteProps[] = [
   {
     path: "/",
     exact: true,
     component: Home,
+  },
+  {
+    path: '/pokemon',
+    exact: true,
+    component: Pokemon
   },
   {
     path: "/drag-and-drop",

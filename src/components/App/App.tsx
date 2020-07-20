@@ -34,6 +34,9 @@ function App() {
             <Link to="/">Home</Link>
           </li>
           <li className="links__item">
+            <Link to="/pokemon">Pokemon</Link>
+          </li>
+          <li className="links__item">
             <Link to="/game">Game</Link>
           </li>
           <li className="links__item">
