@@ -24,6 +24,12 @@ export default function Home() {
         }, {
             text: 'react-i18next',
             url: 'https://react.i18next.com/',
+        }, {
+            text: 'redux-observable',
+            url: 'https://redux-observable.js.org/'
+        }, {
+            text: 'redux-Saga',
+            url: 'https://redux-saga.js.org/'
         }
     ]
     return (
