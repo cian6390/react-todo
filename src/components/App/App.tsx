@@ -5,23 +5,29 @@ import { useLocation, Switch, Route } from "react-router-dom";
 import { Link, routes } from "../../router";
 import { themeContext } from "../ThemeContext";
 
-import { logout, firebaseApp } from '../../services/firebase'
-import { RootState, unsetUser, setUser } from '../../store'
-import { useSelector, useDispatch } from 'react-redux'
+import { logout, firebaseApp } from "../../services/firebase";
+import { RootState, unsetUser, setUser } from "../../store";
+import { useSelector, useDispatch } from "react-redux";
+import { moveable } from "./observable";
 
 function App() {
   usePageViews();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const theme = useContext(themeContext);
-  const auth = useSelector((state: RootState) => state.auth)
+  const auth = useSelector((state: RootState) => state.auth);
 
   useEffect(() => {
-    firebaseApp.auth().onAuthStateChanged(user => dispatch(setUser(user)))
-  }, [dispatch])
+    const { subscription } = moveable(".square");
+    return () => subscription.unsubscribe();
+  }, []);
+
+  useEffect(() => {
+    firebaseApp.auth().onAuthStateChanged((user) => dispatch(setUser(user)));
+  }, [dispatch]);
 
   async function logoutHandler() {
-    await logout()
-    dispatch(unsetUser())
+    await logout();
+    dispatch(unsetUser());
   }
 
   return (
@@ -66,6 +72,7 @@ function App() {
             />
           ))}
         </Switch>
+        <div className="square" />
       </main>
     </div>
   );

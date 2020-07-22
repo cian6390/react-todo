@@ -14,6 +14,17 @@ hr {
   background-color: #ccc;
 }
 
+.square {
+  bottom: 30px;
+  left: 30px;
+  z-index: 1;
+  position: absolute;
+  border-radius: 5px;
+  width: 50px;
+  height: 50px;
+  background-color: lightseagreen;
+}
+
 .todo-wrapper {
   width: 600px;
   margin: 0 auto;
