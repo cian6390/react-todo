@@ -1,7 +1,8 @@
 import "./DND.scss";
-import React from "react";
+import React, { useEffect } from "react";
 import RefList from "../RefList";
 import useDraggable from "./draggable";
+import { moveable } from "./observable";
 
 export default function DND() {
   const items = [
@@ -29,6 +30,11 @@ export default function DND() {
     },
   ];
 
+  useEffect(() => {
+    const { subscription } = moveable(".dnd-square");
+    return () => subscription.unsubscribe();
+  }, []);
+
   return (
     <section>
       <div className="drag-list">
@@ -49,6 +55,7 @@ export default function DND() {
         ))}
       </div>
       <RefList items={refs} />
+      <div className="dnd-square" />
     </section>
   );
 }

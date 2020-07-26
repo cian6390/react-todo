@@ -8,18 +8,12 @@ import { themeContext } from "../ThemeContext";
 import { logout, firebaseApp } from "../../services/firebase";
 import { RootState, unsetUser, setUser } from "../../store";
 import { useSelector, useDispatch } from "react-redux";
-import { moveable } from "./observable";
 
 function App() {
   usePageViews();
   const dispatch = useDispatch();
   const theme = useContext(themeContext);
   const auth = useSelector((state: RootState) => state.auth);
-
-  useEffect(() => {
-    const { subscription } = moveable(".square");
-    return () => subscription.unsubscribe();
-  }, []);
 
   useEffect(() => {
     firebaseApp.auth().onAuthStateChanged((user) => dispatch(setUser(user)));
@@ -72,7 +66,6 @@ function App() {
             />
           ))}
         </Switch>
-        <div className="square" />
       </main>
     </div>
   );
