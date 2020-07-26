@@ -4,8 +4,8 @@ import ReactDOM from "react-dom";
 import App from "./components/App/App";
 import { Router } from "./router";
 import store from "./store";
-import { ThemeProvider } from "./components/ThemeContext";
 import { Provider } from "react-redux";
+import ThemeProvider from "./theme/index";
 
 console.log(`app version ${pkg.version}`);
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { Typography } from '@material-ui/core'
 
 export interface RefListProps {
   items: {
@@ -15,7 +16,7 @@ const rootStyle = {
 export default function RefList(props: RefListProps) {
   return (
     <div style={rootStyle}>
-      <h3>References</h3>
+      <Typography  variant="h4" color="primary">References</Typography>
       <ul>
         {props.items.map((item) => (
           <li style={{ lineHeight: "1.75" }} key={item.text}>
